@@ -17,3 +17,17 @@ $('#search-btn').on('click', () => {
     })
 
 })
+$('#add-btn').on('click', (e) => {
+    e.preventDefault();
+    const newCharacter = {
+        name: $('#name').val().trim(),
+        role: $('#role').val().trim(),
+        age: parseInt($('#age').val().trim()),
+        forcePoints: parseInt($('#force-points').val().trim())
+    };
+    $.post("/api/characters", newCharacter)
+    .then(function(data) {
+      console.log("add.html", data);
+      alert("Adding character...");
+    });
+})

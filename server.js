@@ -44,5 +44,12 @@ app.get("/api/characters/:character", (req, res) => {
     }
     return  res.send('no')
 })
+app.post("/api/characters", (req, res) =>{
+    const newC = req.body;
+    console.log(newC);
+    characters.push(newC);
+    res.json(newC)
+
+})
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
