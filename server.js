@@ -33,7 +33,7 @@ const characters = [{
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")))
 app.get("/api/characters", (req, res) => res.json(characters))
 
-app.get("/add", (req, res) => res.sendFile(path.join(__dirname, "public/me.html")))
+app.get("/add", (req, res) => res.sendFile(path.join(__dirname, "public/add.html")))
 
 app.get("/api/characters/:character", (req, res) => {
     const chosen = req.params.character;
