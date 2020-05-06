@@ -30,13 +30,19 @@ const characters = [{
     forcePoints: 1350
 }];
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"))
-})
+app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")))
 app.get("/api/characters", (req, res) => res.json(characters))
 
-app.get("/add", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/me.html"))
+app.get("/add", (req, res) => res.sendFile(path.join(__dirname, "public/me.html")))
+
+app.get("/api/characters/:character", (req, res) => {
+    const chosen = req.params.character;
+    const found = characters.find(char => chosen === char.routeName)
+
+    if(found) {
+        return res.json(found)
+    }
+    return  res.send('no')
 })
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
